@@ -12,6 +12,8 @@ import modelo.Produto;
 public class UsuarioDAO {
 	Connection cnx = null;
 	
+	
+	
 	public Produto consultarProduto(String nome, int quantidade) {
 		Produto produto = null;
 		ResultSet rs = null;
@@ -42,7 +44,7 @@ public class UsuarioDAO {
 		
 		return produto;
 	}
-	
+	////////////////////////////////////////////////////////////////////////////
 	public List<Produto> listar(){
 		List<Produto> listaDeProdutos = new ArrayList<Produto>();
 		ResultSet rs = null;
