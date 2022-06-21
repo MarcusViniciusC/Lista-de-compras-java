@@ -33,19 +33,19 @@
 			
 				<tr>
 					<td>
-						<%=produto.getId() %>
+						<%=produto.getId()%>
 					</td>
 					<td>
-						<%=produto.getNome() %>
+						<%=produto.getNome()%>
 					</td>
 					<td>
-						<%=produto.getQuantidade() %>
+						<%=produto.getQuantidade()%>
 					</td>
 					<td>
-						<a href=""><img src="image/edit.png" width="24px"/></a>
+						<!-- <a href=""><img src="image/edit.png" width="24px"/></a>-->
 					</td>
 					<td>
-						<img src="image/delete.png" width="24px" onclick=""/>
+						<!-- <img src="image/delete.png" width="24px" onclick=""/>-->
 					</td>
 				</tr>
 			<%

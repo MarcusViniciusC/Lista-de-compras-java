@@ -6,18 +6,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import dao.UsuarioDAO;
-import modelo.Produto;
 
 
-@WebServlet("/ListaServlet")
-public class ListaServlet extends HttpServlet {
+@WebServlet("/IncluirServlet")
+public class IncluirServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     
-    public ListaServlet() {
+    public IncluirServlet() {
+        super();
+        
     }
 
 	
@@ -28,17 +26,8 @@ public class ListaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
-		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-		Produto p = null;
 		
-		HttpSession session = request.getSession();
 		
-		UsuarioDAO dao = new UsuarioDAO();
-		
-		p = dao.consultarProduto(nome, quantidade);
-		
-		response.sendRedirect("lista.jsp");
 	}
 
 }

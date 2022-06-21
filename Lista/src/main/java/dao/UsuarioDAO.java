@@ -12,6 +12,31 @@ import modelo.Produto;
 public class UsuarioDAO {
 	Connection cnx = null;
 	
+	public boolean incluirProduto(Produto produto) {
+		boolean resultado = true;
+		int retornoQuery;
+		
+		cnx = DAO.createConnection();
+		
+		String sql = "INSERT INTO tb_lista (nome, quantidade) VALUES ('?', '?')";
+		
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			ps.setString(1, produto.getNome());
+			ps.setInt(2, produto.getQuantidade());
+			retornoQuery = ps.executeUpdate();
+			
+			if(retornoQuery <=0) {
+				resultado = false;
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
 	
 	
 	public Produto consultarProduto(String nome, int quantidade) {
