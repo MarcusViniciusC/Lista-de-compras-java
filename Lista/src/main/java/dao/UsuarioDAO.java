@@ -91,6 +91,8 @@ public class UsuarioDAO {
 				produto.setId(rs.getInt("id"));
 				produto.setNome(rs.getString("nome"));
 				produto.setQuantidade(rs.getInt("quantidade"));
+				
+				listaDeProdutos.add(produto);
 			}
 			
 		} catch (SQLException e) {

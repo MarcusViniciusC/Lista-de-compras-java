@@ -11,6 +11,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="IncluirServlet" method="post">
+		<label>Produto:</label><br>
+		<input type="text" name="nome" id="nome"/><br>
+		<label>Quantidade:</label><br>
+		<input type="number" name="quantidade" id="quantidade"/><br>
+		<input type="submit" value="novo item"><br>
+	</form>
 	<div>
 		<h2>Lista de Produtos</h2>
 	</div>
@@ -42,10 +49,10 @@
 						<%=produto.getQuantidade()%>
 					</td>
 					<td>
-						<!-- <a href=""><img src="image/edit.png" width="24px"/></a>-->
+						 <a href=""><img src="image/edit.png" width="24px"/></a>
 					</td>
 					<td>
-						<!-- <img src="image/delete.png" width="24px" onclick=""/>-->
+						<img src="image/delete.png" width="24px" onclick=""/>
 					</td>
 				</tr>
 			<%

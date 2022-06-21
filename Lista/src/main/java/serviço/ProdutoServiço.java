@@ -10,8 +10,8 @@ public class ProdutoServiço {
 			return usuario.alterarUsuario(usr);
 		}*/
 
-		public boolean incluir(Produto usr) {
-			return usuario.incluirProduto(usr);
+		public boolean incluir(Produto pdt) {
+			return usuario.incluirProduto(pdt);
 		}
 		/*
 		public boolean excluir(String id) {

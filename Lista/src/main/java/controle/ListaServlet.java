@@ -30,15 +30,23 @@ public class ListaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-		Produto p = null;
+		Produto p = new Produto();
+		
+		/*p.setNome(request.getParameter("nome"));
+		p.setQuantidade(quantidade);*/
+		
+		
+		
 		
 		HttpSession session = request.getSession();
 		
 		UsuarioDAO dao = new UsuarioDAO();
 		
-		p = dao.consultarProduto(nome, quantidade);
+		//p = dao.consultarProduto(nome, quantidade);
 		
-		response.sendRedirect("lista.jsp");
+		
+		session.setAttribute("produto", p);
+		response.sendRedirect("index.jsp");
 	}
 
 }

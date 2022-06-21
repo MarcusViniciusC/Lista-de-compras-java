@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Produto;
+import serviço.ProdutoServiço;
+
 
 @WebServlet("/IncluirServlet")
 public class IncluirServlet extends HttpServlet {
@@ -27,7 +30,17 @@ public class IncluirServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Produto pdt = new Produto();
 		
+		ProdutoServiço servico = new ProdutoServiço();
+		pdt.setNome(request.getParameter("nome"));
+		pdt.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));;
+		
+		//Integer.parseInt(request.getParameter("quantidade"));
+		
+		if(servico.incluir(pdt)) {
+			/**/;
+		
+		}
 	}
-
 }
