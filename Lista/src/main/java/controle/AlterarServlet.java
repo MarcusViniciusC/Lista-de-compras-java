@@ -6,18 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import dao.UsuarioDAO;
 import modelo.Produto;
+import serviço.ProdutoServiço;
 
 
-@WebServlet("/ListaServlet")
-public class ListaServlet extends HttpServlet {
+@WebServlet("/AlterarServlet")
+public class AlterarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     
-    public ListaServlet() {
+    public AlterarServlet() {
+        super();
+        
     }
 
 	
@@ -28,16 +29,17 @@ public class ListaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
-		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-		Produto p = new Produto();
+		Produto pdt = new Produto();
 		
-		HttpSession session = request.getSession();
+		ProdutoServiço servico = new ProdutoServiço();
 		
-		UsuarioDAO dao = new UsuarioDAO();
+		pdt.setId(Integer.parseInt(request.getParameter("id")));
+		pdt.setNome(request.getParameter("nome"));
+		pdt.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 		
-		session.setAttribute("produto", p);
-		response.sendRedirect("index.jsp");
+		if(servico.alterar(pdt)) {
+			response.sendRedirect("index.html");
+		}
 	}
 
 }

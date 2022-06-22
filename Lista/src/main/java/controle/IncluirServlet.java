@@ -31,15 +31,15 @@ public class IncluirServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Produto pdt = new Produto();
+		ProdutoServiço servico = new ProdutoServiço();  
 		
-		ProdutoServiço servico = new ProdutoServiço();
 		pdt.setNome(request.getParameter("nome"));
 		pdt.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));;
 		
 		//Integer.parseInt(request.getParameter("quantidade"));
 		
 		if(servico.incluir(pdt)) {
-			/**/;
+			response.sendRedirect("index.jsp");
 		
 		}
 	}

@@ -12,13 +12,100 @@ import modelo.Produto;
 public class UsuarioDAO {
 	Connection cnx = null;
 	
+	public Produto buscaPorId(int id) {
+		Produto produto = null;
+		ResultSet rs = null;
+		
+		cnx = DAO.createConnection();
+		
+		String sql = "SELECT * FROM tb_lista WHERE id=?";
+		
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				produto = new Produto();
+				
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setQuantidade(rs.getInt("quantidade"));
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return produto;
+	}
+	
+////////////////////////////////////////////////////////////////////////////
+	public boolean alterarProduto(Produto produto) {
+		boolean resultado = true;
+		int retornoQuery;
+		
+		cnx = DAO.createConnection();
+		
+		String sql = "UPDATE tb_lista SET nome=?, quantidade=? WHERE id=?";
+		
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			
+			ps.setString(1, produto.getNome());
+			ps.setInt(2, produto.getQuantidade());
+			ps.setInt(3, produto.getId());
+			
+			retornoQuery = ps.executeUpdate();
+			
+			if(retornoQuery <=0) {
+				resultado = false;
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
+	
+////////////////////////////////////////////////////////////////////////////
+	public boolean excluirProduto(int id) {
+		boolean resultado = true;
+		int retornoQuery;
+		
+		cnx = DAO.createConnection();
+		
+		String sql = "DELETE FROM tb_lista WHERE id=?";
+		
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			retornoQuery = ps.executeUpdate();
+			
+			if(retornoQuery <=0) {
+				resultado = false;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////
 	public boolean incluirProduto(Produto produto) {
 		boolean resultado = true;
 		int retornoQuery;
 		
 		cnx = DAO.createConnection();
 		
-		String sql = "INSERT INTO tb_lista (nome, quantidade) VALUES ('?', '?')";
+		String sql = "INSERT INTO tb_lista (nome, quantidade) VALUES (?, ?)";
 		
 		try {
 			PreparedStatement ps = cnx.prepareStatement(sql);
@@ -38,7 +125,7 @@ public class UsuarioDAO {
 		return resultado;
 	}
 	
-	
+	////////////////////////////////////////////////////////////////////////////
 	public Produto consultarProduto(String nome, int quantidade) {
 		Produto produto = null;
 		ResultSet rs = null;
