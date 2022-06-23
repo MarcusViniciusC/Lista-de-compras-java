@@ -127,7 +127,7 @@
     border-radius: 7px;
     background-color:#dcdcdc;
 }
-#botao{
+.botao{
     margin-top: 10px;
     border: none;
     padding: 5px 10px 5px 10px;
@@ -137,7 +137,7 @@
     background-color:#2e8b57;
 }
 
-#botao:hover{
+.botao:hover{
     cursor: pointer;
    transform: scale(1.1);
    transition:0.5s;
@@ -181,11 +181,9 @@ border:none;
 	<div id="formulario">
 	
 	<form action="IncluirServlet" method="post">
-		<label>Produto:</label><br>
-		<input type="text" name="nome" id="nome" class="preencher"/><br>
-		<label>Quantidade:</label><br>
-		<input type="number" name="quantidade" id="quantidade" class="preencher"/><br>
-		<input type="submit" value="Adicionar item" id="botao"/><br>
+		<input type="text" placeholder="produto" name="nome" id="nome" maxlength="25" class="preencher" required/><br>
+		<input type="number" placeholder="quantidade" name="quantidade" id="quantidade" class="preencher" required/><br>
+		<input type="submit" value="Adicionar item" id="botao" class="botao"/><br>
 	</form><br>
 	
 		<table border=1>

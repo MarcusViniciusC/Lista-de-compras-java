@@ -114,7 +114,7 @@
     border-radius: 7px;
     background-color:#dcdcdc;
 }
-#botao{
+.botao{
     margin-top: 10px;
     border: none;
     padding: 5px 10px 5px 10px;
@@ -124,7 +124,7 @@
     background-color:#2e8b57;
 }
 
-#botao:hover{
+.botao:hover{
     cursor: pointer;
    transform: scale(1.1);
    transition:0.5s;
@@ -133,7 +133,7 @@
 	margin-bottom:15px;	
 }
 table{
-opacy:0;
+
 }
 tr{
 		
@@ -174,11 +174,10 @@ border:none;
 	<div id="formulario">
 	<form action="AlterarProdutoServlet" method="post">
 		<input type="hidden" name="id" id="id" value="<%=pdt.getId() %>"/>
-		<label>Produto:</label><br>
-		<input type="text" name="nome" id="nome" placeholder="produto" class="preencher" value="<%=pdt.getNome() %>"/><br>
-		<label>Quantidade:</label><br>
-		<input type="number" name="quantidade" id="quantidade" placeholder="produto" class="preencher" value="<%=pdt.getQuantidade() %>"/><br>
-		<input type="submit" value="alterar item" id="botao"><br>
+		<input type="text" name="nome" id="nome" placeholder="<%=pdt.getNome() %>" maxlength="25" class="preencher" required /><br>
+		<input type="number" name="quantidade" id="quantidade" placeholder="<%=pdt.getQuantidade() %>" class="preencher" required/><br>
+		<input type="submit" value="alterar item" class="botao"><br>
+		<a href="index.jsp"><input type="button" value="voltar" class="botao"><br></a>
 	</form><br>
 	</div>
 	</div>
