@@ -9,7 +9,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Lista de compras</title>
-
+	<link rel="shortcut icon" href="imgage/logo.png">
 		<script>
 			
 			function confirmarExclusao(id){
@@ -69,6 +69,7 @@
 						<img src="image/deletar.png" width="24px" onclick="confirmarExclusao(<%=produto.getId()%>)"/>
 					</td>
 				</tr>
+				
 			<%
 			}
 			%>
