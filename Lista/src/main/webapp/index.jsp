@@ -151,7 +151,7 @@
         table{
     text-align: center;
     border: none;
-    margin-left:35px;
+    margin-left:54px;
     
 }
 
