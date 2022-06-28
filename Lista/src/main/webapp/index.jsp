@@ -31,7 +31,7 @@
             top: 5vw;
             left: 36%;
             transform: translate(-50%, -50%);
-             background-color: palegoldenrod;
+             background-color:powderblue;
              transition: background 0.2s linear;
              /*color:#663399;*/
              color:rgb(2, 62, 102);
@@ -43,9 +43,9 @@
         }
         
         body.dark {
-        background: #292c35;
+        background:#211a31;
         /*color:rgb(233, 147, 18);*/
-        color:rgb(233, 97, 18);
+        color:#2eaa70;
         }
         .checkbox {
         opacity: 0;
@@ -98,11 +98,49 @@
             width: 22vw;
            border-radius: 20px;
            background-image:url(image/papel.jpg);
-           
            background-size:100%;
          justify-content: space-around;
          position:fixed;
         }
+        
+        
+  
+        
+@media (min-width: 575.98px) {
+    #tudo{
+    width: 22vw;
+    }
+}
+
+
+
+@media (min-width: 576px) and (max-width: 767.98px){
+     #tudo{
+    width: 24vw;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px){
+      #tudo{
+    width: 28vw;
+    }
+}
+
+
+
+@media (min-width: 992px) and (max-width: 1199.98px){
+    #tudo{
+    width: 32vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+    #tudo{
+    width: 36vw;
+    }
+}
+        
         
         #titulo{
         	 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -113,8 +151,11 @@
         table{
     text-align: center;
     border: none;
+    margin-left:35px;
     
 }
+
+
 
 #formulario{
     text-align: center;
@@ -126,6 +167,7 @@
     outline: none;
     border-radius: 7px;
     background-color:#dcdcdc;
+   	
 }
 .botao{
     margin-top: 10px;
@@ -134,7 +176,7 @@
     outline: none;
     border-radius: 5px;
     color:#fff;
-    background-color:#2e8b57;
+    background-color:#2e7daa;
 }
 
 .botao:hover{
@@ -161,10 +203,22 @@ td{
 border:none;
 }
 
+#excluir{
+	cursor: pointer;
+}
+
+#pc{
+	margin:0;
+	padding:0;
+}
+
     </style>
 
 </head>
 <body>
+	
+	
+    
 	 <div id="btn-dark">
         <input type="checkbox" class="checkbox" id="chk"/>
         <label class="label" for="chk">
@@ -173,8 +227,12 @@ border:none;
             <div class="ball"></div>
         </label>
     </div>
+    
+     
+    
 		<div id="tudo">
 		<div id="titulo">
+		<img src="image/pc.svg" width="110px" id="pc">
 			<h2>Lista de compras</h2>
 		</div>
 		
@@ -182,13 +240,12 @@ border:none;
 	
 	<form action="IncluirServlet" method="post">
 		<input type="text" placeholder="produto" name="nome" id="nome" maxlength="25" class="preencher" required/><br>
-		<input type="number" placeholder="quantidade" name="quantidade" id="quantidade" class="preencher" required/><br>
+		<input type="number" min="1"  placeholder="quantidade" name="quantidade" id="quantidade" class="preencher" required/><br>
 		<input type="submit" value="Adicionar item" id="botao" class="botao"/><br>
 	</form><br>
 	
 		<table border=1>
 			<tr>
-				<th>ID&ensp;&ensp;</th>
 				<th>PRODUTO&ensp;&ensp;</th>
 				<th>QUANTIDADE&ensp;&ensp;</th>
 				<th colspan=2></th>
@@ -204,9 +261,6 @@ border:none;
 			
 				<tr>
 					<td>
-						<%=produto.getId()%>
-					</td>
-					<td>
 						<%=produto.getNome()%>
 					</td>
 					<td>
@@ -216,7 +270,7 @@ border:none;
 						 <a href="AlteracaoProduto?id=<%=produto.getId()%>"><img src="image/editar.webp" width="24px"/></a>
 					</td>
 					<td>
-						<img src="image/deletar.png" width="24px" onclick="confirmarExclusao(<%=produto.getId()%>)"/>
+						<img src="image/deletar.png" id="excluir" width="24px" onclick="confirmarExclusao(<%=produto.getId()%>)"/>
 					</td>
 				</tr>
 					</div>
@@ -227,6 +281,8 @@ border:none;
 			%>
 			<script src="script.js"></script>
     <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
+    
+   
 	
 </body>
 </html>

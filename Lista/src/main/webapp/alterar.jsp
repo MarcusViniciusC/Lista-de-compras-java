@@ -18,7 +18,7 @@
             top: 5vw;
             left: 36%;
             transform: translate(-50%, -50%);
-             background-color: palegoldenrod;
+            background-color:powderblue;
              transition: background 0.2s linear;
              /*color:#663399;*/
              color:rgb(2, 62, 102);
@@ -30,9 +30,9 @@
         }
         
         body.dark {
-        background: #292c35;
+       background:#211a31;
         /*color:rgb(233, 147, 18);*/
-        color:rgb(233, 97, 18);
+        color:#2eaa70;
         }
         .checkbox {
         opacity: 0;
@@ -121,7 +121,7 @@
     outline: none;
     border-radius: 5px;
     color:#fff;
-    background-color:#2e8b57;
+    background-color:#2e7daa;
 }
 
 .botao:hover{
@@ -175,8 +175,8 @@ border:none;
 	<form action="AlterarProdutoServlet" method="post">
 		<input type="hidden" name="id" id="id" value="<%=pdt.getId() %>"/>
 		<input type="text" name="nome" id="nome" placeholder="<%=pdt.getNome() %>" maxlength="25" class="preencher" required /><br>
-		<input type="number" name="quantidade" id="quantidade" placeholder="<%=pdt.getQuantidade() %>" class="preencher" required/><br>
-		<input type="submit" value="alterar item" class="botao"><br>
+		<input type="number" min="1" name="quantidade" id="quantidade" placeholder="<%=pdt.getQuantidade() %>" class="preencher" required/><br>
+		<input type="submit" value="alterar item"  class="botao"><br>
 		<a href="index.jsp"><input type="button" value="voltar" class="botao"><br></a>
 	</form><br>
 	</div>
